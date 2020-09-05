@@ -15,7 +15,16 @@ class SearchTableViewController: UITableViewController {
     var results: SearchResults? {
         didSet {
             if let _ = self.results {
-                self.albums = results?.results.albummatches.album
+                switch selectedScopeBarTittle {
+                case Constants.albumScopeBarTitle:
+                    self.albums = results?.results.albummatches?.album
+                case Constants.artistScopeBarTitle:
+                    self.artists = results?.results.artistmatches?.artist
+                case Constants.trackScopeBarTitle:
+                    self.songs = results?.results.trackmatches?.track
+                default:
+                    break
+                }
             }
         }
     }
@@ -28,7 +37,23 @@ class SearchTableViewController: UITableViewController {
         }
     }
     
-    var selectedScopeBarTittle: String = "Album"
+    var artists: [Artist]? {
+        didSet {
+            if let _ = self.artists {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    var songs: [Track]? {
+        didSet {
+            if let _ = self.songs {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    var selectedScopeBarTittle: String = Constants.ALBUM
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,9 +77,9 @@ class SearchTableViewController: UITableViewController {
         case Constants.albumScopeBarTitle:
             return albums?.count ?? 0
         case Constants.artistScopeBarTitle:
-            return albums?.count ?? 0
+            return artists?.count ?? 0
         case Constants.trackScopeBarTitle:
-            return albums?.count ?? 0
+            return songs?.count ?? 0
         default:
             return 0
         }
@@ -78,7 +103,25 @@ class SearchTableViewController: UITableViewController {
         return UITableViewCell()
     }
     
-    
+    fileprivate func createGetCallParams(withSearchkey key:String?) -> [String:String] {
+        var params = [String:String]()
+        params[Constants.APIKEY] = WebAPIConstants.lastAPIKey
+        params[Constants.FORMAT] = Constants.jsonFormat
+        switch selectedScopeBarTittle {
+        case Constants.albumScopeBarTitle:
+            params[Constants.METHOD] = Constants.albumMethodParam
+            params[Constants.ALBUM] = key
+        case Constants.artistScopeBarTitle:
+            params[Constants.METHOD] = Constants.artistMethodParam
+            params[Constants.ARTIST] = key
+        case Constants.trackScopeBarTitle:
+            params[Constants.METHOD] = Constants.trackMethodParam
+            params[Constants.TRACK] = key
+        default:
+            break
+        }
+        return params
+    }
     
 }
 
@@ -100,19 +143,13 @@ extension SearchTableViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let searchString = searchController.searchBar.text
-        var params = [String:String]()
-        params["method"] = "album.search"
-        params["album"] = searchString
-        params["api_key"] = WebAPIConstants.lastAPIKey
-        params["format"] = Constants.jsonFormat
+        let params = createGetCallParams(withSearchkey: searchString)
         NetworkCallManager.shared.getCall(withURL: WebAPIConstants.endpoint, urlParams: params) { [unowned self] (data) in
             do {
                 self.results = try JSONDecoder().decode(SearchResults.self, from: data)
-                self.tableView.reloadData()
             } catch {
                 debugPrint(error.localizedDescription)
             }
         }
-        
     }
 }

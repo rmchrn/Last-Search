@@ -17,7 +17,9 @@ struct SearchResults: Codable {
 struct Results: Codable {
     let opensearchQuery: OpensearchQuery
     let opensearchTotalResults, opensearchStartIndex, opensearchItemsPerPage: String
-    let albummatches: Albummatches
+    let albummatches: Albummatches?
+    let artistmatches: Artistmatches?
+    let trackmatches: Trackmatches?
     let attr: Attr
 
     enum CodingKeys: String, CodingKey {
@@ -25,9 +27,14 @@ struct Results: Codable {
         case opensearchTotalResults = "opensearch:totalResults"
         case opensearchStartIndex = "opensearch:startIndex"
         case opensearchItemsPerPage = "opensearch:itemsPerPage"
-        case albummatches
+        case albummatches, artistmatches, trackmatches
         case attr = "@attr"
     }
+}
+
+// MARK: - Artistmatches
+struct Artistmatches: Codable {
+    let artist: [Artist]
 }
 
 // MARK: - Albummatches
@@ -35,10 +42,17 @@ struct Albummatches: Codable {
     let album: [Album]
 }
 
+
+// MARK: - Trackmatches
+struct Trackmatches: Codable {
+    let track: [Track]
+}
+
+
 // MARK: - Image
 struct Image: Codable {
-    let text: String
-    let size: Size
+    let text: String?
+    let size: Size?
 
     enum CodingKeys: String, CodingKey {
         case text = "#text"
@@ -51,11 +65,12 @@ enum Size: String, Codable {
     case large = "large"
     case medium = "medium"
     case small = "small"
+    case mega = "mega"
 }
 
 // MARK: - Attr
 struct Attr: Codable {
-    let attrFor: String
+    let attrFor: String?
 
     enum CodingKeys: String, CodingKey {
         case attrFor = "for"
@@ -64,7 +79,7 @@ struct Attr: Codable {
 
 // MARK: - OpensearchQuery
 struct OpensearchQuery: Codable {
-    let text, role, searchTerms, startPage: String
+    let text, role, searchTerms, startPage: String?
 
     enum CodingKeys: String, CodingKey {
         case text = "#text"

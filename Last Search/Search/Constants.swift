@@ -16,11 +16,19 @@ enum Constants {
     static let trackScopeBarTitle = "Track"
     
     static let albumMethodParam = "album.search"
+    static let artistMethodParam = "artist.search"
+    static let trackMethodParam = "track.search"
+    static let APIKEY = "api_key"
+    static let FORMAT = "format"
+    static let METHOD = "method"
+    static let ALBUM = "album"
+    static let ARTIST = "artist"
+    static let TRACK = "track"
     static let jsonFormat = "json"
 }
 
 enum WebAPIConstants {
     static let endpoint = "http://ws.audioscrobbler.com/2.0/"
     static let lastAPIKey = "a104c21f30ec50b78b1b23edaaeef31b"
-    
 }
+
