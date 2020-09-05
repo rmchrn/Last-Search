@@ -1,0 +1,6 @@
+module Pods_Last_Search {
+  umbrella header "Pods-Last Search-umbrella.h"
+
+  export *
+  module * { export * }
+}
