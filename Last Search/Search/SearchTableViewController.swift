@@ -15,16 +15,7 @@ class SearchTableViewController: UITableViewController {
     var results: SearchResults? {
         didSet {
             if let _ = self.results {
-                switch selectedScopeBarTittle {
-                case Constants.albumScopeBarTitle:
-                    self.albums = results?.results.albummatches?.album
-                case Constants.artistScopeBarTitle:
-                    self.artists = results?.results.artistmatches?.artist
-                case Constants.trackScopeBarTitle:
-                    self.songs = results?.results.trackmatches?.track
-                default:
-                    break
-                }
+                updateDataSources()
             }
         }
     }
@@ -69,16 +60,36 @@ class SearchTableViewController: UITableViewController {
         searchController.searchBar.scopeButtonTitles = [Constants.albumScopeBarTitle, Constants.trackScopeBarTitle, Constants.artistScopeBarTitle]
         searchController.searchBar.delegate = self
     }
+    
+    
+    fileprivate func updateDataSources() {
+        switch selectedScopeBarTittle.lowercased() {
+        case Constants.albumScopeBarTitle.lowercased():
+            self.albums = results?.results?.albummatches?.album
+            self.artists = nil
+            self.songs = nil
+        case Constants.artistScopeBarTitle.lowercased():
+            self.artists = results?.results?.artistmatches?.artist
+            self.albums = nil
+            self.songs = nil
+        case Constants.trackScopeBarTitle.lowercased():
+            self.songs = results?.results?.trackmatches?.track
+            self.albums = nil
+            self.artists = nil
+        default:
+            break
+        }
+    }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch selectedScopeBarTittle {
-        case Constants.albumScopeBarTitle:
+        switch selectedScopeBarTittle.lowercased() {
+        case Constants.albumScopeBarTitle.lowercased():
             return albums?.count ?? 0
-        case Constants.artistScopeBarTitle:
+        case Constants.artistScopeBarTitle.lowercased():
             return artists?.count ?? 0
-        case Constants.trackScopeBarTitle:
+        case Constants.trackScopeBarTitle.lowercased():
             return songs?.count ?? 0
         default:
             return 0
@@ -86,35 +97,37 @@ class SearchTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch selectedScopeBarTittle {
-        case Constants.albumScopeBarTitle:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.searchAlbumCell, for: indexPath) as! AlbumTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.searchAlbumCell, for: indexPath) as! AlbumTableViewCell
+        if (albums?.count ?? 0) > 0 {
             if let album = albums?[indexPath.row] {
                 cell.updateData(withAlbum: album)
             }
-            return cell
-        case Constants.artistScopeBarTitle:
-            break
-        case Constants.trackScopeBarTitle:
-            break
-        default:
-            break
         }
-        return UITableViewCell()
+        if (artists?.count ?? 0) > 0 {
+            if let artist = artists?[indexPath.row] {
+                cell.updateData(withAlbum: artist)
+            }
+        }
+        if (songs?.count ?? 0) > 0 {
+            if let song = songs?[indexPath.row] {
+                cell.updateData(withAlbum: song)
+            }
+        }
+        return cell
     }
     
     fileprivate func createGetCallParams(withSearchkey key:String?) -> [String:String] {
         var params = [String:String]()
         params[Constants.APIKEY] = WebAPIConstants.lastAPIKey
         params[Constants.FORMAT] = Constants.jsonFormat
-        switch selectedScopeBarTittle {
-        case Constants.albumScopeBarTitle:
+        switch selectedScopeBarTittle.lowercased() {
+        case Constants.albumScopeBarTitle.lowercased():
             params[Constants.METHOD] = Constants.albumMethodParam
             params[Constants.ALBUM] = key
-        case Constants.artistScopeBarTitle:
+        case Constants.artistScopeBarTitle.lowercased():
             params[Constants.METHOD] = Constants.artistMethodParam
             params[Constants.ARTIST] = key
-        case Constants.trackScopeBarTitle:
+        case Constants.trackScopeBarTitle.lowercased():
             params[Constants.METHOD] = Constants.trackMethodParam
             params[Constants.TRACK] = key
         default:

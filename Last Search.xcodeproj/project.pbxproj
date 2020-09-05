@@ -152,7 +152,6 @@
 				AAAE3ED625039A3200152975 /* Assets.xcassets */,
 				AAAE3ED825039A3200152975 /* LaunchScreen.storyboard */,
 				AAAE3EDB25039A3200152975 /* Info.plist */,
-				AAAE3F0B2503AAB800152975 /* NetworkCallManager.swift */,
 				AAAE3F0D2503AD5400152975 /* Utilities */,
 			);
 			path = "Last Search";
@@ -201,6 +200,7 @@
 		AAAE3F0D2503AD5400152975 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				AAAE3F0B2503AAB800152975 /* NetworkCallManager.swift */,
 				AAAE3F0E2503AD7A00152975 /* UIImageView+extension.swift */,
 			);
 			path = Utilities;

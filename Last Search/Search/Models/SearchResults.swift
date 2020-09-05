@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - SearchResults
 struct SearchResults: Codable {
-    let results: Results
+    let results: Results?
 }
 
 // MARK: - Results

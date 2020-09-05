@@ -71,7 +71,9 @@
                                 <connections>
                                     <outlet property="albumImage" destination="9in-zz-mK8" id="421-Mq-ooq"/>
                                     <outlet property="albumName" destination="d8h-Pd-9cR" id="qAj-Lt-zJJ"/>
+                                    <outlet property="albumTitleLabel" destination="s2k-1p-lT3" id="EIO-lG-6aQ"/>
                                     <outlet property="artistName" destination="Lct-ah-nTN" id="33Z-Q4-VgH"/>
+                                    <outlet property="artistTitleLabel" destination="dEd-r0-g8v" id="0v5-hL-WZP"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
