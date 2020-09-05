@@ -15,3 +15,4 @@ struct Album: Codable {
     let image: [Image]
     let streamable, mbid: String
 }
+
