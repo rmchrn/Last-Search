@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Track
 struct Track: Codable {
-    let name, artist: String
+    let name, artist: String?
     let url: String
     let streamable: Streamable
     let listeners: String

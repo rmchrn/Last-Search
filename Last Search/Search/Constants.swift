@@ -18,6 +18,11 @@ enum Constants {
     static let albumMethodParam = "album.search"
     static let artistMethodParam = "artist.search"
     static let trackMethodParam = "track.search"
+    
+    static let albumInfoMethodParam = "album.getInfo"
+    static let artisInfotMethodParam = "artist.getInfo"
+    static let trackInfoMethodParam = "track.getInfo"
+    
     static let APIKEY = "api_key"
     static let FORMAT = "format"
     static let METHOD = "method"
@@ -25,6 +30,9 @@ enum Constants {
     static let ARTIST = "artist"
     static let TRACK = "track"
     static let jsonFormat = "json"
+    
+    static let moreInfoVCID = "MoreInfoViewController"
+    static let mainStoryBoard = "Main"
 }
 
 enum WebAPIConstants {

@@ -18,8 +18,8 @@ struct AlbumDetails: Codable {
     let artist: String?
     let mbid: String?
     let url: String?
-    let image: [Image]
-    let listeners, playcount: String
+    let image: [Image]?
+    let listeners, playcount: String?
     let tracks: Tracks?
     let tags: Toptags?
     let wiki: Wiki?
@@ -28,9 +28,24 @@ struct AlbumDetails: Codable {
 
 // MARK: - Tracks
 struct Tracks: Codable {
-    let track: [Track]?
+    let track: [TrackArtist]?
 }
 
+// MARK: - Track
+struct TrackArtist: Codable {
+    let name: String?
+    let artist: ArtistTrack?
+    let url: String?
+    let listeners: String?
+    let image: [Image]?
+    let mbid: String?
+}
+
+struct ArtistTrack: Codable {
+    let name: String?
+    let mbid: String?
+    let url: String?
+}
 
 // MARK: - ArtistClass
 struct ArtistClass: Codable {

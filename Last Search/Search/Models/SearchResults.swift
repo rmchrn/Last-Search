@@ -66,6 +66,7 @@ enum Size: String, Codable {
     case medium = "medium"
     case small = "small"
     case mega = "mega"
+    case empty = ""
 }
 
 // MARK: - Attr

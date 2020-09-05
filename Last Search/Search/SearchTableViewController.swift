@@ -116,6 +116,29 @@ class SearchTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sb = UIStoryboard(name: Constants.mainStoryBoard, bundle: nil)
+        let moreInfoVC = sb.instantiateViewController(withIdentifier: Constants.moreInfoVCID) as! MoreInfoViewController
+        if (albums?.count ?? 0) > 0 {
+            if let album = albums?[indexPath.row] {
+                moreInfoVC.albumSelected = album.name
+                moreInfoVC.artistSelected = album.artist
+            }
+        }
+        if (artists?.count ?? 0) > 0 {
+            if let artist = artists?[indexPath.row] {
+                moreInfoVC.artistSelected = artist.name
+            }
+        }
+        if (songs?.count ?? 0) > 0 {
+            if let song = songs?[indexPath.row] {
+                moreInfoVC.artistSelected = song.artist
+                moreInfoVC.trackSelected = song.name
+            }
+        }
+        self.navigationController?.pushViewController(moreInfoVC, animated: true)
+    }
+    
     fileprivate func createGetCallParams(withSearchkey key:String?) -> [String:String] {
         var params = [String:String]()
         params[Constants.APIKEY] = WebAPIConstants.lastAPIKey
