@@ -33,7 +33,9 @@ class MoreInfoViewController: UIViewController {
         updateSelectedType()
         getMoreInfo()
     }
-    
+    /**
+     get more info API call based on the inputs injected to MoreInfoVC
+     */
     func getMoreInfo() {
         let params = createGetCallParams()
         NetworkCallManager.shared.getCall(withURL: WebAPIConstants.endpoint, urlParams: params) { [unowned self] (data) in
@@ -66,6 +68,7 @@ class MoreInfoViewController: UIViewController {
         } else {
             self.headerImage.isHidden = true
         }
+        self.title = album?.name
         nameLabel.text = album?.name
         publishedLabel.text = album?.wiki?.published
         listeners.text = album?.listeners
@@ -82,6 +85,7 @@ class MoreInfoViewController: UIViewController {
         } else {
             self.headerImage.isHidden = true
         }
+        self.title = artist?.name
         nameLabel.text = artist?.name
         publishedLabel.text = artist?.bio?.published
         listeners.text = artist?.stats?.listeners
@@ -99,6 +103,7 @@ class MoreInfoViewController: UIViewController {
             self.headerImage.isHidden = true
         }
         nameLabel.text = track?.name
+        self.title = track?.name
         publishedLabel.text = track?.wiki?.published
         listeners.text = track?.listeners
         playcountLabel.text = track?.playcount
@@ -113,7 +118,9 @@ class MoreInfoViewController: UIViewController {
             selectedType = .artist
         }
     }
-    
+    /**
+    it will create the get call parameters in a robust way
+    */
     private func createGetCallParams() -> [String:String] {
         var params = [String:String]()
         params[Constants.APIKEY] = WebAPIConstants.lastAPIKey

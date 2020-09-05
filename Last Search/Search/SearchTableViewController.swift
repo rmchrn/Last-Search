@@ -44,13 +44,16 @@ class SearchTableViewController: UITableViewController {
         }
     }
     
-    var selectedScopeBarTittle: String = Constants.ALBUM
+    private var selectedScopeBarTittle: String = Constants.ALBUM
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchControllerSetup()
     }
     
+    /**
+     it will do initial setup for search view controller
+     */
     private func searchControllerSetup() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -61,7 +64,9 @@ class SearchTableViewController: UITableViewController {
         searchController.searchBar.delegate = self
     }
     
-    
+    /**
+     it will update the data sources need for the table view
+     */
     fileprivate func updateDataSources() {
         switch selectedScopeBarTittle.lowercased() {
         case Constants.albumScopeBarTitle.lowercased():
@@ -116,6 +121,9 @@ class SearchTableViewController: UITableViewController {
         return cell
     }
     
+    /**
+     it helps user to navigate to the more info view controller for track, artist and Album
+     */
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: Constants.mainStoryBoard, bundle: nil)
         let moreInfoVC = sb.instantiateViewController(withIdentifier: Constants.moreInfoVCID) as! MoreInfoViewController
@@ -139,6 +147,9 @@ class SearchTableViewController: UITableViewController {
         self.navigationController?.pushViewController(moreInfoVC, animated: true)
     }
     
+    /**
+    it will create the get call parameters in a robust way
+    */
     fileprivate func createGetCallParams(withSearchkey key:String?) -> [String:String] {
         var params = [String:String]()
         params[Constants.APIKEY] = WebAPIConstants.lastAPIKey
@@ -167,6 +178,9 @@ extension SearchTableViewController: UISearchResultsUpdating {
 }
 
 extension SearchTableViewController: UISearchBarDelegate {
+    /**
+     it will be called when we change the scope selection
+     */
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         if let title = searchBar.scopeButtonTitles?[selectedScope] {
             selectedScopeBarTittle = title
@@ -176,7 +190,9 @@ extension SearchTableViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.dismiss(animated: true, completion: nil)
     }
-    
+    /**
+     Network call being made when user taps on search button
+     */
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let searchString = searchController.searchBar.text
         let params = createGetCallParams(withSearchkey: searchString)
