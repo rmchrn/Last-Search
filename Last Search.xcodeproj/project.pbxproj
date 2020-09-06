@@ -13,7 +13,6 @@
 		AAAE3ED525039A3100152975 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAAE3ED325039A3100152975 /* Main.storyboard */; };
 		AAAE3ED725039A3200152975 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAAE3ED625039A3200152975 /* Assets.xcassets */; };
 		AAAE3EDA25039A3200152975 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAAE3ED825039A3200152975 /* LaunchScreen.storyboard */; };
-		AAAE3EE525039A3200152975 /* Last_SearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAE3EE425039A3200152975 /* Last_SearchTests.swift */; };
 		AAAE3EF025039A3200152975 /* Last_SearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAE3EEF25039A3200152975 /* Last_SearchUITests.swift */; };
 		AAAE3F0125039C5900152975 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAE3F0025039C5900152975 /* SearchTableViewController.swift */; };
 		AAAE3F0325039C9300152975 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAE3F0225039C9300152975 /* Constants.swift */; };
@@ -28,6 +27,7 @@
 		AAAE3F172503FA3100152975 /* MoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAE3F162503FA3100152975 /* MoreInfoViewController.swift */; };
 		AAAE3F1925040C2800152975 /* AlbumInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAE3F1825040C2800152975 /* AlbumInfo.swift */; };
 		AAAE3F1B25040DAD00152975 /* ArtistInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAE3F1A25040DAD00152975 /* ArtistInfo.swift */; };
+		AAAE3F202504969800152975 /* SearchVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAE3F1F2504969800152975 /* SearchVCTests.swift */; };
 		D3E0753E51A23792D3135808 /* libPods-Last Search.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 68916EF8751F3FFFC53613F4 /* libPods-Last Search.a */; };
 		F7BE2F7D3A09F90638A3E788 /* libPods-Last SearchTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F17370A41A5572AC9746FB /* libPods-Last SearchTests.a */; };
 /* End PBXBuildFile section */
@@ -66,7 +66,6 @@
 		AAAE3ED925039A3200152975 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AAAE3EDB25039A3200152975 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAAE3EE025039A3200152975 /* Last SearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Last SearchTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AAAE3EE425039A3200152975 /* Last_SearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Last_SearchTests.swift; sourceTree = "<group>"; };
 		AAAE3EE625039A3200152975 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAAE3EEB25039A3200152975 /* Last SearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Last SearchUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAE3EEF25039A3200152975 /* Last_SearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Last_SearchUITests.swift; sourceTree = "<group>"; };
@@ -84,6 +83,8 @@
 		AAAE3F162503FA3100152975 /* MoreInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoViewController.swift; sourceTree = "<group>"; };
 		AAAE3F1825040C2800152975 /* AlbumInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumInfo.swift; sourceTree = "<group>"; };
 		AAAE3F1A25040DAD00152975 /* ArtistInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistInfo.swift; sourceTree = "<group>"; };
+		AAAE3F1E2504969700152975 /* Last SearchTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Last SearchTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		AAAE3F1F2504969800152975 /* SearchVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVCTests.swift; sourceTree = "<group>"; };
 		D56EFF6C801D3DE4DFF5011A /* Pods-Last SearchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Last SearchTests.debug.xcconfig"; path = "Target Support Files/Pods-Last SearchTests/Pods-Last SearchTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,8 +169,9 @@
 		AAAE3EE325039A3200152975 /* Last SearchTests */ = {
 			isa = PBXGroup;
 			children = (
-				AAAE3EE425039A3200152975 /* Last_SearchTests.swift */,
 				AAAE3EE625039A3200152975 /* Info.plist */,
+				AAAE3F1F2504969800152975 /* SearchVCTests.swift */,
+				AAAE3F1E2504969700152975 /* Last SearchTests-Bridging-Header.h */,
 			);
 			path = "Last SearchTests";
 			sourceTree = "<group>";
@@ -302,6 +304,7 @@
 					};
 					AAAE3EDF25039A3200152975 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 						TestTargetID = AAAE3EC925039A3000152975;
 					};
 					AAAE3EEA25039A3200152975 = {
@@ -453,7 +456,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAAE3EE525039A3200152975 /* Last_SearchTests.swift in Sources */,
+				AAAE3F202504969800152975 /* SearchVCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,6 +661,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 35JXTNEBCE;
 				INFOPLIST_FILE = "Last SearchTests/Info.plist";
@@ -669,6 +673,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rc.Last-SearchTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Last SearchTests/Last SearchTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Last Search.app/Last Search";
@@ -681,6 +687,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 35JXTNEBCE;
 				INFOPLIST_FILE = "Last SearchTests/Info.plist";
@@ -692,6 +699,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rc.Last-SearchTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Last SearchTests/Last SearchTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Last Search.app/Last Search";

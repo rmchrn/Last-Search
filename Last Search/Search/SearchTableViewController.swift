@@ -44,7 +44,7 @@ class SearchTableViewController: UITableViewController {
         }
     }
     
-    private var selectedScopeBarTittle: String = Constants.ALBUM
+    var selectedScopeBarTittle: String = Constants.ALBUM
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,7 +150,7 @@ class SearchTableViewController: UITableViewController {
     /**
     it will create the get call parameters in a robust way
     */
-    fileprivate func createGetCallParams(withSearchkey key:String?) -> [String:String] {
+    func createGetCallParams(withSearchkey key:String?) -> [String:String] {
         var params = [String:String]()
         params[Constants.APIKEY] = WebAPIConstants.lastAPIKey
         params[Constants.FORMAT] = Constants.jsonFormat
@@ -190,18 +190,26 @@ extension SearchTableViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    func getSearchResults(_ params: [String : String], completion: (()->Void)? = nil) {
+        NetworkCallManager.shared.getCall(withURL: WebAPIConstants.endpoint, urlParams: params) { [unowned self] (data) in
+            do {
+                self.results = try JSONDecoder().decode(SearchResults.self, from: data)
+                if let completion = completion {
+                    completion()
+                }
+            } catch {
+                debugPrint(error.localizedDescription)
+            }
+        }
+    }
+    
     /**
      Network call being made when user taps on search button
      */
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let searchString = searchController.searchBar.text
         let params = createGetCallParams(withSearchkey: searchString)
-        NetworkCallManager.shared.getCall(withURL: WebAPIConstants.endpoint, urlParams: params) { [unowned self] (data) in
-            do {
-                self.results = try JSONDecoder().decode(SearchResults.self, from: data)
-            } catch {
-                debugPrint(error.localizedDescription)
-            }
-        }
+        getSearchResults(params)
     }
 }
