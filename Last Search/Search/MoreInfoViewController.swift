@@ -36,10 +36,11 @@ class MoreInfoViewController: UIViewController {
     /**
      get more info API call based on the inputs injected to MoreInfoVC
      */
-    func getMoreInfo() {
+    func getMoreInfo(completion: (()->Void)? = nil) {
         let params = createGetCallParams()
-        NetworkCallManager.shared.getCall(withURL: WebAPIConstants.endpoint, urlParams: params) { [unowned self] (data) in
+        NetworkCallManager.shared.getCall(withURL: WebAPIConstants.endpoint, urlParams: params) { [weak self] (data) in
             let jsonDecoder = JSONDecoder()
+            guard let self = self else { return }
             do {
                 switch self.selectedType {
                 case .album:
@@ -51,6 +52,9 @@ class MoreInfoViewController: UIViewController {
                 case .track:
                     let trackInfo = try jsonDecoder.decode(TrackInfo.self, from: data)
                     self.updateTrackInfo(trackInfo: trackInfo)
+                }
+                if let completion = completion {
+                    completion()
                 }
             } catch {
                 debugPrint(error)
@@ -109,7 +113,7 @@ class MoreInfoViewController: UIViewController {
         playcountLabel.text = track?.playcount
     }
     
-    private func updateSelectedType() {
+    func updateSelectedType() {
         if let _ = artistSelected, let _ = albumSelected {
             selectedType = .album
         } else if let _ = artistSelected, let _ = trackSelected {

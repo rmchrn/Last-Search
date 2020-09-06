@@ -28,6 +28,7 @@
 		AAAE3F1925040C2800152975 /* AlbumInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAE3F1825040C2800152975 /* AlbumInfo.swift */; };
 		AAAE3F1B25040DAD00152975 /* ArtistInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAE3F1A25040DAD00152975 /* ArtistInfo.swift */; };
 		AAAE3F202504969800152975 /* SearchVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAE3F1F2504969800152975 /* SearchVCTests.swift */; };
+		AAAE3F222504970800152975 /* MoreInfoVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAE3F212504970800152975 /* MoreInfoVCTests.swift */; };
 		D3E0753E51A23792D3135808 /* libPods-Last Search.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 68916EF8751F3FFFC53613F4 /* libPods-Last Search.a */; };
 		F7BE2F7D3A09F90638A3E788 /* libPods-Last SearchTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F17370A41A5572AC9746FB /* libPods-Last SearchTests.a */; };
 /* End PBXBuildFile section */
@@ -85,6 +86,7 @@
 		AAAE3F1A25040DAD00152975 /* ArtistInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistInfo.swift; sourceTree = "<group>"; };
 		AAAE3F1E2504969700152975 /* Last SearchTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Last SearchTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		AAAE3F1F2504969800152975 /* SearchVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVCTests.swift; sourceTree = "<group>"; };
+		AAAE3F212504970800152975 /* MoreInfoVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoVCTests.swift; sourceTree = "<group>"; };
 		D56EFF6C801D3DE4DFF5011A /* Pods-Last SearchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Last SearchTests.debug.xcconfig"; path = "Target Support Files/Pods-Last SearchTests/Pods-Last SearchTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -172,6 +174,7 @@
 				AAAE3EE625039A3200152975 /* Info.plist */,
 				AAAE3F1F2504969800152975 /* SearchVCTests.swift */,
 				AAAE3F1E2504969700152975 /* Last SearchTests-Bridging-Header.h */,
+				AAAE3F212504970800152975 /* MoreInfoVCTests.swift */,
 			);
 			path = "Last SearchTests";
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAAE3F202504969800152975 /* SearchVCTests.swift in Sources */,
+				AAAE3F222504970800152975 /* MoreInfoVCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
